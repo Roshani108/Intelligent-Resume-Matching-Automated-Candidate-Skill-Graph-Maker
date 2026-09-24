@@ -296,55 +296,50 @@ Where:
 
 ---
 
-## 🌐 Live Deployment Guide
+## 🌐 Live Deployment Guide (Single Live Link)
 
-You can deploy **meetMux** for free in just a few minutes using either **Render** (recommended for fullstack) or **Vercel + Render**:
+**meetMux** is configured as a unified fullstack application — FastAPI directly serves the pre-built React frontend SPA and handles all API routes under the same origin. This means you deploy **one single service** and get **one single live link** with zero CORS setup!
 
-### Option 1: 1-Click Fullstack on Render (Recommended)
-Render natively supports both the FastAPI backend and React frontend using the included [`render.yaml`](./render.yaml):
-
-1. Go to [Render Dashboard](https://dashboard.render.com/) and sign in with GitHub.
+### 🌟 1-Click Single Live Link on Render (Free)
+1. Go to [Render Dashboard](https://dashboard.render.com/) and sign in with your GitHub account.
 2. Click **New +** ➔ **Blueprint**.
-3. Connect your repository: `Roshani108/Intelligent-Resume-Matching-Automated-Candidate-Skill-Graph-Maker`.
-4. Render will automatically detect `render.yaml` and provision:
-   - **`meetmux-backend`**: FastAPI Python Web Service (runs on port 8000).
-   - **`meetmux-frontend`**: React Vite Static Site (with rewrite rules and automatic routing).
+3. Select your repository: `Roshani108/Intelligent-Resume-Matching-Automated-Candidate-Skill-Graph-Maker`.
+4. Render will detect [`render.yaml`](./render.yaml) and provision the unified service:
+   - **Name**: `meetmux`
+   - **Environment**: Python 3.11
+   - **Root Directory**: `backend`
+   - **Build Command**: `pip install -r requirements.txt && python -m spacy download en_core_web_sm`
+   - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
 5. Click **Apply**.
-6. Once deployed, copy your backend URL (e.g. `https://meetmux-backend.onrender.com`) and add it to your frontend's environment variable `VITE_API_URL` under Environment settings.
+6. When the build finishes, you will receive **one single live URL** (e.g. `https://meetmux.onrender.com`):
+   - Visiting `/` loads the interactive React application.
+   - All API endpoints `/api/...` execute seamlessly on the same domain.
+   - Interactive Swagger API docs are available at `/docs`.
 
 ---
 
-### Option 2: Frontend on Vercel + Backend on Render / Railway
-
-#### Deploying Frontend on Vercel:
-1. Push your code to GitHub.
-2. Go to [Vercel](https://vercel.com/) and click **Add New Project**.
-3. Import `Intelligent-Resume-Matching-Automated-Candidate-Skill-Graph-Maker`.
-4. In **Root Directory**, click edit and select `frontend`.
-5. Under **Environment Variables**, add:
-   - `VITE_API_URL`: Your live backend API URL (e.g., `https://meetmux-backend.onrender.com`).
-6. Click **Deploy**. Vercel will give you a live production URL (e.g. `https://meet-mux.vercel.app`) with SSL!
-
-#### Deploying Backend on Render:
+### Alternative: Manual Web Service on Render
+If you prefer creating a Web Service manually:
 1. In Render, select **New +** ➔ **Web Service**.
-2. Connect your repo and set:
+2. Connect your GitHub repository.
+3. Configure the settings:
    - **Root Directory**: `backend`
    - **Runtime**: `Python 3`
    - **Build Command**: `pip install -r requirements.txt && python -m spacy download en_core_web_sm`
    - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
-3. Click **Deploy Web Service**.
+4. Click **Deploy Web Service** ➔ You get your single live link!
 
 ---
 
-### Option 3: Docker Deployment
-A production-ready [`Dockerfile`](./backend/Dockerfile) is provided in `backend/`:
+### Alternative: Single Docker Container
+Run both the frontend and backend in a single Docker container:
 
 ```bash
-# Build and run the backend container
 cd backend
-docker build -t meetmux-backend .
-docker run -p 8000:8000 meetmux-backend
+docker build -t meetmux .
+docker run -p 8000:8000 meetmux
 ```
+Open [http://localhost:8000](http://localhost:8000) to access the complete application.
 
 ---
 

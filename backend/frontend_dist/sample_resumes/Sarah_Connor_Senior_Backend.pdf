@@ -1,0 +1,96 @@
+%PDF-1.3
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Resources <<
+/Font <<
+/F1 <<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+>>
+>>
+/MediaBox [ 0.0 0.0 612 792 ]
+/Parent 2 0 R
+/Contents <<
+/Length 945
+>>
+stream
+BT
+/F1 14 Tf
+50 720 Td
+(Sarah Connor - Senior Backend Engineer) Tj
+/F1 10 Tf
+0 -20 Td
+(sarah.connor@cyberdyne.io | 555-987-6543 | San Francisco, CA) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Professional Experience) Tj
+0 -14 Td
+(Lead Backend Developer at Tech Corp | 2020 - Present) Tj
+0 -14 Td
+(- Architected scalable REST APIs in Python using FastAPI and PostgreSQL.) Tj
+0 -14 Td
+(- Deployed containerized microservices using Docker and orchestrated via Kubernetes.) Tj
+0 -14 Td
+(- Managed AWS infrastructure with high availability.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Software Engineer at Cloud Innovations | 2018 - 2020) Tj
+0 -14 Td
+(- Developed high throughput web services using Python, Django, and Redis.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Education) Tj
+0 -14 Td
+(Bachelor of Science in Computer Science - UC Berkeley, 2018) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Skills) Tj
+0 -14 Td
+(Python, FastAPI, PostgreSQL, Docker, Kubernetes, AWS, REST APIs, Git, React) Tj
+0 -14 Td
+ET
+endstream
+>>
+endobj
+xref
+0 5
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000113 00000 n 
+0000000162 00000 n 
+trailer
+<<
+/Size 5
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+1318
+%%EOF
