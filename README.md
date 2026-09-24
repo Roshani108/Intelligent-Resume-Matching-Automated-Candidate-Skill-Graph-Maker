@@ -296,6 +296,58 @@ Where:
 
 ---
 
+## 🌐 Live Deployment Guide
+
+You can deploy **meetMux** for free in just a few minutes using either **Render** (recommended for fullstack) or **Vercel + Render**:
+
+### Option 1: 1-Click Fullstack on Render (Recommended)
+Render natively supports both the FastAPI backend and React frontend using the included [`render.yaml`](./render.yaml):
+
+1. Go to [Render Dashboard](https://dashboard.render.com/) and sign in with GitHub.
+2. Click **New +** ➔ **Blueprint**.
+3. Connect your repository: `Roshani108/Intelligent-Resume-Matching-Automated-Candidate-Skill-Graph-Maker`.
+4. Render will automatically detect `render.yaml` and provision:
+   - **`meetmux-backend`**: FastAPI Python Web Service (runs on port 8000).
+   - **`meetmux-frontend`**: React Vite Static Site (with rewrite rules and automatic routing).
+5. Click **Apply**.
+6. Once deployed, copy your backend URL (e.g. `https://meetmux-backend.onrender.com`) and add it to your frontend's environment variable `VITE_API_URL` under Environment settings.
+
+---
+
+### Option 2: Frontend on Vercel + Backend on Render / Railway
+
+#### Deploying Frontend on Vercel:
+1. Push your code to GitHub.
+2. Go to [Vercel](https://vercel.com/) and click **Add New Project**.
+3. Import `Intelligent-Resume-Matching-Automated-Candidate-Skill-Graph-Maker`.
+4. In **Root Directory**, click edit and select `frontend`.
+5. Under **Environment Variables**, add:
+   - `VITE_API_URL`: Your live backend API URL (e.g., `https://meetmux-backend.onrender.com`).
+6. Click **Deploy**. Vercel will give you a live production URL (e.g. `https://meet-mux.vercel.app`) with SSL!
+
+#### Deploying Backend on Render:
+1. In Render, select **New +** ➔ **Web Service**.
+2. Connect your repo and set:
+   - **Root Directory**: `backend`
+   - **Runtime**: `Python 3`
+   - **Build Command**: `pip install -r requirements.txt && python -m spacy download en_core_web_sm`
+   - **Start Command**: `uvicorn app.main:app --host 0.0.0.0 --port $PORT`
+3. Click **Deploy Web Service**.
+
+---
+
+### Option 3: Docker Deployment
+A production-ready [`Dockerfile`](./backend/Dockerfile) is provided in `backend/`:
+
+```bash
+# Build and run the backend container
+cd backend
+docker build -t meetmux-backend .
+docker run -p 8000:8000 meetmux-backend
+```
+
+---
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

@@ -2,8 +2,13 @@ import spacy
 from spacy.matcher import PhraseMatcher
 from typing import Dict, List, Set
 
-# 1. Load spaCy model
-nlp = spacy.load("en_core_web_sm")
+# 1. Load spaCy model with automatic download fallback for cloud deployment
+try:
+    nlp = spacy.load("en_core_web_sm")
+except OSError:
+    import spacy.cli
+    spacy.cli.download("en_core_web_sm")
+    nlp = spacy.load("en_core_web_sm")
 
 # 2. Canonical Skill Knowledge Base categorized by domain
 SKILL_TAXONOMY = {
