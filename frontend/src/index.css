@@ -1,0 +1,351 @@
+/* ============================================================
+   meetMux — Resume Intelligence Design System
+   Typography: DM Serif Display (Display) + DM Sans (UI)
+   Theme: Deep Slate + Warm Amber/Gold
+   ============================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #F8F7F4;
+  color: #1E293B;
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* Hide print-only component on screen */
+.print-only {
+  display: none;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* CSS Variables */
+:root {
+  --bg-main: #F8F7F4;
+  --bg-card: #FFFFFF;
+  --bg-surface: #F1F0ED;
+  --bg-muted: #F5F4F1;
+  --bg-dark: #0F172A;
+  --bg-dark-card: #1E293B;
+  --bg-dark-hover: #334155;
+
+  --ink-primary: #0F172A;
+  --ink-secondary: #475569;
+  --ink-tertiary: #94A3B8;
+  --ink-border: #E2E8F0;
+  --ink-border-strong: #CBD5E1;
+
+  --accent-primary: #D97706;
+  --accent-primary-hover: #B45309;
+  --accent-light: #FEF3C7;
+  --accent-mid: #FCD34D;
+  --accent-glow: rgba(217, 119, 6, 0.25);
+
+  --accent-teal: #0D9488;
+  --accent-teal-light: #CCFBF1;
+  --accent-teal-dark: #0F766E;
+
+  --accent-red: #DC2626;
+  --accent-red-light: #FEF2F2;
+
+  --accent-amber: #F59E0B;
+  --accent-amber-light: #FFFBEB;
+
+  --accent-blue: #2563EB;
+  --accent-blue-light: #EFF6FF;
+
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 4px 16px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 12px 40px rgba(15, 23, 42, 0.08);
+  --shadow-accent: 0 6px 24px rgba(217, 119, 6, 0.3);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+}
+
+/* Animations */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+}
+
+@keyframes borderGlow {
+  0%, 100% {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 0 var(--accent-glow);
+  }
+  50% {
+    border-color: var(--accent-mid);
+    box-shadow: 0 0 12px 4px var(--accent-glow);
+  }
+}
+
+/* Utilities */
+.font-display {
+  font-family: 'DM Serif Display', serif;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #D97706 0%, #F59E0B 50%, #D97706 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--bg-dark);
+  color: #FFFFFF;
+  border: none;
+  padding: 13px 28px;
+  border-radius: var(--radius-md);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  transition: all 0.22s ease;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--bg-dark-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent-primary);
+  color: #FFFFFF;
+  border: none;
+  padding: 13px 28px;
+  border-radius: var(--radius-md);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: var(--shadow-accent);
+  transition: all 0.22s ease;
+  text-decoration: none;
+  letter-spacing: -0.2px;
+}
+
+.btn-accent:hover:not(:disabled) {
+  background: var(--accent-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(217, 119, 6, 0.4);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #FFFFFF;
+  color: var(--ink-secondary);
+  border: 1.5px solid var(--ink-border);
+  padding: 11px 20px;
+  border-radius: var(--radius-md);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-outline:hover {
+  background: var(--bg-surface);
+  color: var(--ink-primary);
+  border-color: var(--ink-border-strong);
+  transform: translateY(-1px);
+}
+
+/* Card hover animation utility */
+.card-hover {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================================
+   CLEAN 1-PAGE PRINT STYLES
+   ============================================================ */
+@media print {
+  @page {
+    margin: 1.0cm;
+    size: A4 portrait;
+  }
+
+  html, body {
+    background: #FFFFFF !important;
+    color: #0F172A !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  div, p, h1, h2, h3, h4, span, ul, li {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+}

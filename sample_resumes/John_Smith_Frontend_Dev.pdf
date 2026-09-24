@@ -1,0 +1,88 @@
+%PDF-1.3
+%‚„œ”
+1 0 obj
+<<
+/Producer (pypdf)
+>>
+endobj
+2 0 obj
+<<
+/Type /Pages
+/Count 1
+/Kids [ 4 0 R ]
+>>
+endobj
+3 0 obj
+<<
+/Type /Catalog
+/Pages 2 0 R
+>>
+endobj
+4 0 obj
+<<
+/Type /Page
+/Resources <<
+/Font <<
+/F1 <<
+/Type /Font
+/Subtype /Type1
+/BaseFont /Helvetica
+>>
+>>
+>>
+/MediaBox [ 0.0 0.0 612 792 ]
+/Parent 2 0 R
+/Contents <<
+/Length 655
+>>
+stream
+BT
+/F1 14 Tf
+50 720 Td
+(John Smith - Frontend UI Developer) Tj
+/F1 10 Tf
+0 -20 Td
+(john.smith@webdesign.com | 555-123-4567 | New York, NY) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Professional Experience) Tj
+0 -14 Td
+(Frontend Developer at Creative Web Studio | 2021 - Present) Tj
+0 -14 Td
+(- Built interactive responsive client dashboards using React, JavaScript, and HTML.) Tj
+0 -14 Td
+(- Integrated REST APIs and state management with Node.js.) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Education) Tj
+0 -14 Td
+(Bachelor of Arts in Digital Media - NYU, 2021) Tj
+0 -14 Td
+() Tj
+0 -14 Td
+(Skills) Tj
+0 -14 Td
+(JavaScript, React, HTML, CSS, Tailwind CSS, Node.js, Git) Tj
+0 -14 Td
+ET
+endstream
+>>
+endobj
+xref
+0 5
+0000000000 65535 f 
+0000000015 00000 n 
+0000000054 00000 n 
+0000000113 00000 n 
+0000000162 00000 n 
+trailer
+<<
+/Size 5
+/Root 3 0 R
+/Info 1 0 R
+>>
+startxref
+1028
+%%EOF
