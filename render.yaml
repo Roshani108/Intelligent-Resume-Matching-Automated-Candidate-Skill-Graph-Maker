@@ -1,11 +1,10 @@
-services:
-  # Unified Single Fullstack Service (FastAPI + React SPA)
+﻿services:
   - type: web
-    name: meetmux
+    name: meetmux-api
     env: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
-    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    startCommand: bash start.sh
     plan: free
     healthCheckPath: /health
     envVars:

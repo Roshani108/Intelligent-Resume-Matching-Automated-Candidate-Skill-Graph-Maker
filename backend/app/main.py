@@ -1,4 +1,5 @@
-import os
+﻿import os
+import sys
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -10,7 +11,7 @@ from app.api.graph import router as graph_router
 
 # 1. Instantiate FastAPI application
 app = FastAPI(
-    title="Intelligent Resume Matching & Skill Graph API",
+    title="meetMux Resume Intelligence API",
     version="1.0.0",
     description="Backend API for parsing resumes, extracting skills, and semantic matching.",
 )
@@ -32,11 +33,9 @@ app.include_router(graph_router)
 
 @app.get("/health")
 def health_check():
-    return {
-        "status": "ok"
-    }
+    return {"status": "ok", "service": "meetMux Resume Intelligence API"}
 
-# 4. Resolve frontend dist directory for single-link fullstack serving
+# 4. Serve frontend static files if built dist exists
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 frontend_dist_candidates = [
     os.path.abspath(os.path.join(BASE_DIR, "..", "frontend_dist")),
@@ -52,33 +51,33 @@ for candidate in frontend_dist_candidates:
         break
 
 if frontend_dist:
-    # Mount assets folder
     assets_dir = os.path.join(frontend_dist, "assets")
     if os.path.exists(assets_dir):
         app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
-    # Mount sample resumes
     sample_resumes_dir = os.path.join(frontend_dist, "sample_resumes")
     if os.path.exists(sample_resumes_dir):
         app.mount("/sample_resumes", StaticFiles(directory=sample_resumes_dir), name="sample_resumes")
 
-    # SPA catch-all handler for root and client routes
     @app.get("/{full_path:path}")
     async def serve_spa(full_path: str):
-        # Don't hijack /api, /docs, /openapi.json or /health
         if full_path.startswith("api/") or full_path.startswith("docs") or full_path in ["openapi.json", "health"]:
             return {"error": "Not Found"}
-
         requested_file = os.path.join(frontend_dist, full_path)
         if os.path.isfile(requested_file):
             return FileResponse(requested_file)
-
-        index_file = os.path.join(frontend_dist, "index.html")
-        return FileResponse(index_file)
+        return FileResponse(os.path.join(frontend_dist, "index.html"))
 else:
     @app.get("/")
     def read_root():
         return {
-            "message": "Welcome to Intelligent Resume Matching & Skill Graph API",
-            "docs_url": "/docs"
+            "message": "meetMux Resume Intelligence API",
+            "docs": "/docs",
+            "health": "/health"
         }
+
+# 5. Allow running directly: python -m app.main
+if __name__ == "__main__":
+    import uvicorn
+    port = int(os.environ.get("PORT", 8000))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port, reload=False)
