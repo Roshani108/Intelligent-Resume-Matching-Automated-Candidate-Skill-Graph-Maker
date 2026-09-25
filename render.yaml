@@ -4,7 +4,7 @@
     env: python
     rootDir: backend
     buildCommand: pip install -r requirements.txt && python -m spacy download en_core_web_sm
-    startCommand: bash start.sh
+    startCommand: python -c "import os,uvicorn; uvicorn.run('app.main:app', host='0.0.0.0', port=int(os.environ.get('PORT',10000)))"
     plan: free
     healthCheckPath: /health
     envVars:
